@@ -27,6 +27,10 @@ var editor = new InAadressEditor({
         "strokeWidth": "2"
     }
 });
+    document.addEventListener('featureModified', function(e){ 
+    alert("Objekti andmed: " + e.detail.feature);
+    alert("Kaardi BBOX: " + e.detail.bbox);
+});
 </script>
 </body>
 </html>
