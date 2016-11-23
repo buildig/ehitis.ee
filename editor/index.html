@@ -3,12 +3,30 @@
 <head>
 <title>In-ADS komponent (ver. 2.0.3)</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<script type="text/javascript" src="http://inadstest.maaamet.ee/inaadress/js/inaadress.min.js"></script>
+<script type="text/javascript" src=" http://inaadress.maaamet.ee/inaadress/js/editor.min.js"></script>
 </head>
 <body>
 <div id="map" style="width: 100%; height: 100%"></div>
 <script>
-var inAadress = new InAadress({"mode":"1","container":"map","nocss":false,"showScale":true,"tools":["measure"],"fullscreenMode":true,"appartment":0,"ihist":"1993","defaultBaseLayer":"ALUSKAART","baseLayers":["ALUSKAART","ORTOFOTO","HYBRIID"],"mapLayers":["AADRESS","KATASTRIYKSUS"],"WMS":[]});
+var editor = new InAadressEditor({
+    "container": "inAadressEditor",
+    "searchLayers": ["EHAK", "TANAV", "KATASTRIYKSUS", "EHITISHOONE"],
+    "appartment": 2,
+    "defaultBaseLayer": "ALUSKAART",
+    "baseLayers": ["ALUSKAART", "ORTOFOTO", "HYBRIID"],
+    "mapLayers": ["KATASTRIYKSUS"],
+    "format": "GeoJSON",
+    "drawing": true,
+    "geomType": "polygon",
+    "multiGeom": false,
+    "editStyle": {
+        "fillColor": "#FF0000",
+        "fillOpacity": "0.5",
+        "strokeColor": "#000000",
+        "strokeOpacity": "0.9",
+        "strokeWidth": "2"
+    }
+});
 </script>
 </body>
 </html>
