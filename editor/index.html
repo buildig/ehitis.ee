@@ -7,6 +7,7 @@
 </head>
 <body>
 <div id="inAadressEditor" style="width: 100%; height: 100%"></div>
+<div id="modifiedFeature">Väljund</div>
 <script>
 var editor = new InAadressEditor({
     "container": "inAadressEditor",
@@ -28,7 +29,8 @@ var editor = new InAadressEditor({
     }
 });
     document.addEventListener('featureModified', function(e){ 
-    alert("Objekti andmed: " + e.detail.feature);
+        document.getElementById("modifiedFeature").innerHTML = "+e.detail.feature+"
+            }, false);
 });
 </script>
 </body>
