@@ -4,7 +4,6 @@
 <head>
     <title>ehitis.ee</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -18,9 +17,9 @@
     <script>
         var editor = new InAadressEditor({
             "container": "kaart",
-            "hideLogo": true,
+            "hideLogo": false,
             "showScale": true,
-            "tools": ["measure"],
+            "tools": ["measure", ],
             "fullscreenMode": true,
             "appartment": 0,
             "searchLayers": ["EHAK", "TANAV", "KATASTRIYKSUS", "EHITISHOONE"],
@@ -41,7 +40,14 @@
             }
         });
         document.addEventListener('featureModified', function(e) {
-            bootbox.alert("Objekti andmed: " + e.detail.feature);
+            bootbox.alert({
+                size: "small",
+                title: "GeoJSON",
+                message: e.detail.feature
+            });
+            setTimeout(function() {
+                box.modal('hide');
+            }, 3000);
         });
     </script>
 </body>
