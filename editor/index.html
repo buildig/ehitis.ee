@@ -2,16 +2,14 @@
 <html>
 
 <head>
-    <title>In-ADS komponent (ver. 2.0.3)</title>
+    <title>ehitis.ee</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/4.4.0/bootbox.min.js"></script>
     <script type="text/javascript" src=" http://inaadress.maaamet.ee/inaadress/js/editor.min.js"></script>
-
-    <!-- CSS dependencies -->
-    <link rel="stylesheet" type="text/css" href="bootstrap.min.css">
 
 </head>
 
@@ -20,15 +18,20 @@
     <script>
         var editor = new InAadressEditor({
             "container": "kaart",
+            "hideLogo": true,
+            "showScale": true,
+            "tools": ["measure"],
+            "fullscreenMode": true,
+            "appartment": 0,
             "searchLayers": ["EHAK", "TANAV", "KATASTRIYKSUS", "EHITISHOONE"],
-            "appartment": 2,
             "defaultBaseLayer": "ALUSKAART",
             "baseLayers": ["ALUSKAART", "ORTOFOTO", "HYBRIID"],
-            "mapLayers": ["KATASTRIYKSUS"],
+            "mapLayers": ["AADRESS", "KATASTRIYKSUS"],
+            "WMS": [],
             "format": "GeoJSON",
             "drawing": true,
             "geomType": "polygon",
-            "multiGeom": false,
+            "multiGeom": true,
             "editStyle": {
                 "fillColor": "#FF0000",
                 "fillOpacity": "0.5",
@@ -38,7 +41,7 @@
             }
         });
         document.addEventListener('featureModified', function(e) {
-            bootbox.alert("GeoJSON: " + e.detail.feature);
+            bootbox.alert("Objekti andmed: " + e.detail.feature);
         });
     </script>
 </body>
