@@ -41,6 +41,7 @@
                 "strokeWidth": "2"
             }
         });
+
         document.addEventListener('featureAdded', function(e) {
             bootbox.alert({
                 size: "small",
@@ -54,6 +55,35 @@
                 title: "GeoJSON",
                 message: e.detail.feature
             });
+        });
+        document.addEventListener('addressSelected', function(e) {
+            var geojson = {
+                "type": "FeatureCollection",
+                "features": [{
+                    "type": "Feature",
+                    "properties": {
+                        "ads_oid": e.detail.ads_oid,
+                        "orig_tunnus": e.detail.orig_tunnus,
+                        "paadress": e.detail.paadress
+                    },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [
+                            e.detail.l,
+                            e.detail.b
+                        ]
+                    }
+                }]
+            };
+
+            bootbox.dialog({
+                size: "small",
+                title: "GeoJSON",
+                message: JSON.stringify(geojson)
+            });
+            //            window.setTimeout(function() {
+            //                bootbox.hideAll();
+            //            }, 3000);
         });
     </script>
 </body>
