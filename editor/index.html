@@ -44,12 +44,14 @@
 
         document.addEventListener('featureAdded', function(e) {
             bootbox.alert({
+                size: "small",
                 title: "GeoJSON",
                 message: e.detail.feature
             });
         });
         document.addEventListener('featureModified', function(e) {
             bootbox.alert({
+                size: "small",
                 title: "GeoJSON",
                 message: e.detail.feature
             });
@@ -75,8 +77,9 @@
             };
 
             bootbox.dialog({
+                size: "small",
                 title: "GeoJSON",
-                message: JSON.stringify(geojson, null, 2)
+                message: "<pre>" + JSON.stringify(geojson, null, 2) + "</pre>"
             });
             //            window.setTimeout(function() {
             //                bootbox.hideAll();
