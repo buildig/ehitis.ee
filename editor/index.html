@@ -8,7 +8,9 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/4.4.0/bootbox.min.js"></script>
-    <script type="text/javascript" src=" http://inaadress.maaamet.ee/inaadress/js/editor.min.js"></script>
+    <script src='https://api.mapbox.com/mapbox.js/plugins/turf/v1.3.0/turf.min.js'></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/openlayers/2.13.1/OpenLayers.js" charset="UTF-8"></script>
+    <script type="text/javascript" src=" http://inadstest.maaamet.ee/inaadress/js/editor.min.js"></script>
 
 </head>
 
@@ -28,9 +30,9 @@
             "mapLayers": ["AADRESS", "KATASTRIYKSUS"],
             "WMS": [],
             "format": "GeoJSON",
-            "drawing": true,
+            "drawing": false,
             "geomType": "polygon",
-            "multiGeom": true,
+            "multiGeom": false,
             "editStyle": {
                 "fillColor": "#FF0000",
                 "fillOpacity": "0.5",
@@ -39,15 +41,19 @@
                 "strokeWidth": "2"
             }
         });
+        document.addEventListener('featureAdded', function(e) {
+            bootbox.alert({
+                size: "small",
+                title: "GeoJSON",
+                message: e.detail.feature
+            });
+        });
         document.addEventListener('featureModified', function(e) {
             bootbox.alert({
                 size: "small",
                 title: "GeoJSON",
                 message: e.detail.feature
             });
-            setTimeout(function() {
-                box.modal('hide');
-            }, 3000);
         });
     </script>
 </body>
