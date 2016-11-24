@@ -77,8 +77,9 @@
             };
 
             bootbox.dialog({
+                size: "small",
                 title: "GeoJSON",
-                message: JSON.stringify(geojson)
+                message: JSON.stringify(geojson, null, 2)
             });
             //            window.setTimeout(function() {
             //                bootbox.hideAll();
