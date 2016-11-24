@@ -1,35 +1,46 @@
 <!DOCTYPE HTML>
 <html>
+
 <head>
-<title>In-ADS komponent (ver. 2.0.3)</title>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<script type="text/javascript" src=" http://inaadress.maaamet.ee/inaadress/js/editor.min.js"></script>
+    <title>In-ADS komponent (ver. 2.0.3)</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/4.4.0/bootbox.min.js"></script>
+    <script type="text/javascript" src=" http://inaadress.maaamet.ee/inaadress/js/editor.min.js"></script>
+
+    <!-- CSS dependencies -->
+    <link rel="stylesheet" type="text/css" href="bootstrap.min.css">
+
 </head>
+
 <body>
-<div id="kaart" style="width: 100%; height: 100%"></div>
-<script>
-var editor = new InAadressEditor({
-    "container": "kaart",
-    "searchLayers": ["EHAK", "TANAV", "KATASTRIYKSUS", "EHITISHOONE"],
-    "appartment": 2,
-    "defaultBaseLayer": "ALUSKAART",
-    "baseLayers": ["ALUSKAART", "ORTOFOTO", "HYBRIID"],
-    "mapLayers": ["KATASTRIYKSUS"],
-    "format": "GeoJSON",
-    "drawing": true,
-    "geomType": "polygon",
-    "multiGeom": false,
-    "editStyle": {
-        "fillColor": "#FF0000",
-        "fillOpacity": "0.5",
-        "strokeColor": "#000000",
-        "strokeOpacity": "0.9",
-        "strokeWidth": "2"
-    }
-});
-document.addEventListener('featureModified', function(e){ 
-    alert("Objekti andmed: " + e.detail.feature);
-});
-</script>
+    <div id="kaart" style="width: 100%; height: 100%"></div>
+    <script>
+        var editor = new InAadressEditor({
+            "container": "kaart",
+            "searchLayers": ["EHAK", "TANAV", "KATASTRIYKSUS", "EHITISHOONE"],
+            "appartment": 2,
+            "defaultBaseLayer": "ALUSKAART",
+            "baseLayers": ["ALUSKAART", "ORTOFOTO", "HYBRIID"],
+            "mapLayers": ["KATASTRIYKSUS"],
+            "format": "GeoJSON",
+            "drawing": true,
+            "geomType": "polygon",
+            "multiGeom": false,
+            "editStyle": {
+                "fillColor": "#FF0000",
+                "fillOpacity": "0.5",
+                "strokeColor": "#000000",
+                "strokeOpacity": "0.9",
+                "strokeWidth": "2"
+            }
+        });
+        document.addEventListener('featureModified', function(e) {
+            bootbox.alert("GeoJSON: " + e.detail.feature);
+        });
+    </script>
 </body>
+
 </html>
