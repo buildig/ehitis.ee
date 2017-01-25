@@ -30,8 +30,8 @@
             "mapLayers": ["AADRESS", "KATASTRIYKSUS"],
             "WMS": [],
             "format": "GeoJSON",
-            "drawing": false,
-            "geomType": "polygon",
+            "drawing": true,
+            "geomType": {"point", "line", "polygon"},
             "multiGeom": false,
             "editStyle": {
                 "fillColor": "#FF0000",
@@ -45,13 +45,13 @@
         document.addEventListener('featureAdded', function(e) {
             bootbox.alert({
                 title: "GeoJSON",
-                message: e.detail.feature
+                message: "<pre>" + JSON.stringify(e.detail.feature, null, 2) + "</pre>"
             });
         });
         document.addEventListener('featureModified', function(e) {
             bootbox.alert({
                 title: "GeoJSON",
-                message: e.detail.feature
+                message: "<pre>" + JSON.stringify(e.detail.feature, null, 2) + "</pre>"
             });
         });
         document.addEventListener('addressSelected', function(e) {
