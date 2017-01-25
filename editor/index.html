@@ -45,13 +45,13 @@
         document.addEventListener('featureAdded', function(e) {
             bootbox.alert({
                 title: "GeoJSON",
-                message: "<pre> + e.detail.feature + </pre>"
+                message: e.detail.feature
             });
         });
         document.addEventListener('featureModified', function(e) {
             bootbox.alert({
                 title: "GeoJSON",
-                message: "<pre> + e.detail.feature + </pre>"
+                message: e.detail.feature
             });
         });
         document.addEventListener('addressSelected', function(e) {
