@@ -74,6 +74,12 @@ var hybriid = new L.TileLayer('proxy.php?url=http://tiles.maaamet.ee/tm/s/1.0.0/
   zIndex: 2
 });
 
+L.control.locate({
+  strings: {
+    title: "Näita minu asukohta"
+  }
+}).addTo(map);
+
 L.control.layers({
   "Kaart": aluskaart,
   "Foto": fotokaart
