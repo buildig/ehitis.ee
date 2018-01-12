@@ -89,9 +89,9 @@ L.control.layers({
 }).addTo(map);
 
 var layerHashKeys = {
-  'alus': aluskaart,
-  'foto': fotokaart,
-  'hybriid': hybriid,
-  'kataster': kataster
+  'a': aluskaart,
+  'f': fotokaart,
+  'h': hybriid,
+  'k': kataster
 };
 L.myHash(map, layerHashKeys);
