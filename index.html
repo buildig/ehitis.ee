@@ -39,10 +39,10 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-        <a class="navbar-brand" href="/">ehitis.ee</a>
+        <a class="navbar-brand" href="/"><strong>ehitis.ee</strong></a>
       </div>
       <div class="collapse navbar-collapse" id="myNavbar">
-      <!--
+        <!--
         <ul class="nav navbar-nav navbar-left">
           <li><a href=""></a></li>
           <li><a href=""></a></li>
@@ -51,6 +51,16 @@
           <li><a href="#"><i class="glyphicon glyphicon-question-sign"></i></a></li>
         </ul>
       -->
+        <form class="navbar-form navbar-right" role="search">
+          <div class="input-group">
+            <input id="searchbox" input type="text" class="form-control" placeholder="Otsi aadressi" name="Otsi">
+            <div class="input-group-btn">
+              <button class="btn btn-default" type="submit">
+              <i class="glyphicon glyphicon-search"></i>
+            </button>
+            </div>
+          </div>
+        </form>
       </div>
     </div>
   </nav>
@@ -63,6 +73,7 @@
     <script src="https://unpkg.com/leaflet@1.2.0/dist/leaflet.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.3.12/proj4.js"></script>
     <script src="https://cdn.rawgit.com/kartena/Proj4Leaflet/master/src/proj4leaflet.js"></script>
+    <script src="https://cdn.rawgit.com/stefanocudini/leaflet-search/master/dist/leaflet-search.min.js"></script>
     <script src='https://unpkg.com/leaflet-omnivore@0.3.4/leaflet-omnivore.min.js'></script>
     <script src="https://cdn.rawgit.com/heigeo/leaflet.wms/gh-pages/src/leaflet.wms.js"></script>
     <script src="https://cdn.jsdelivr.net/leaflet.locatecontrol/0.58.0/L.Control.Locate.min.js"></script>
