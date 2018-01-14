@@ -45,7 +45,7 @@ var map = new L.Map('map', {
   crs: EPSG_3301
 });
 
-map.attributionControl.setPrefix('Maa-amet');
+map.attributionControl.setPrefix('Kaart <a title="Maa-amet" href="http://geoportaal.maaamet.ee" target="_blank">Maa-amet</a> | Teostus <a title="PRIA" href="https://buildig.com/" target="_blank">Buildig</a>');
 
 var aluskaart = new L.TileLayer('http://tiles.maaamet.ee/tm/s/1.0.0/kaart/{z}/{x}/{-y}.png', {
   maxZoom: 13,
@@ -81,30 +81,30 @@ L.control.locate({
 }).addTo(map);
 
 function formatJSON(rawjson) {
-    var json = {},
-        res, key, loc = [];
-    res = rawjson.addresses;
-    for (var i in res) {
-        key = res[i].ipikkaadress;
-        loc = L.latLng(res[i].viitepunkt_b, res[i].viitepunkt_l);
-        json[key] = loc;
-    }
-    return json;
+  var json = {},
+    res, key, loc = [];
+  res = rawjson.addresses;
+  for (var i in res) {
+    key = res[i].ipikkaadress;
+    loc = L.latLng(res[i].viitepunkt_b, res[i].viitepunkt_l);
+    json[key] = loc;
+  }
+  return json;
 };
 
 map.addControl(new L.Control.Search({
-    url: 'https://inaadress.maaamet.ee/inaadress/gazetteer?features=EHITISHOONE&address={s}',
-    jsonpParam: 'callback',
-    formatData: formatJSON,
-    textPlaceholder: 'Otsi ehiise aadressi',
-    marker: L.circleMarker([0, 0], {
-        radius: 20,
-        color: "#ffcc00"
-    }),
-    autoCollapse: true,
-    autoType: false,
-    minLength: 2,
-    zoom: 18
+  url: 'https://inaadress.maaamet.ee/inaadress/gazetteer?features=EHITISHOONE&address={s}',
+  jsonpParam: 'callback',
+  formatData: formatJSON,
+  textPlaceholder: 'Otsi ehiise aadressi',
+  marker: L.circleMarker([0, 0], {
+    radius: 20,
+    color: "#ffcc00"
+  }),
+  autoCollapse: true,
+  autoType: false,
+  minLength: 2,
+  zoom: 18
 }));
 
 L.control.layers({
