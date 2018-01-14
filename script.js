@@ -80,6 +80,33 @@ L.control.locate({
   }
 }).addTo(map);
 
+function formatJSON(rawjson) {
+    var json = {},
+        res, key, loc = [];
+    res = rawjson.addresses;
+    for (var i in res) {
+        key = res[i].ipikkaadress;
+        loc = L.latLng(res[i].viitepunkt_b, res[i].viitepunkt_l);
+        json[key] = loc;
+    }
+    return json;
+};
+
+map.addControl(new L.Control.Search({
+    url: 'https://inaadress.maaamet.ee/inaadress/gazetteer?features=EHITISHOONE&address={s}',
+    jsonpParam: 'callback',
+    formatData: formatJSON,
+    textPlaceholder: 'Otsi ehiise aadressi',
+    marker: L.circleMarker([0, 0], {
+        radius: 20,
+        color: "#ffcc00"
+    }),
+    autoCollapse: true,
+    autoType: false,
+    minLength: 2,
+    zoom: 18
+}));
+
 L.control.layers({
   "Kaart": aluskaart,
   "Foto": fotokaart
