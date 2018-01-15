@@ -69,7 +69,7 @@ var kataster = L.WMS.overlay("http://kaart.maaamet.ee/wms/alus-geo", {
 });
 kataster.setOpacity(0.8);
 
-var hybriid = new L.TileLayer('proxy.php?url=http://tiles.maaamet.ee/tm/s/1.0.0/hybriid/{z}/{x}/{-y}.png', {
+var hybriid = new L.TileLayer('http://tiles.maaamet.ee/tm/s/1.0.0/hybriid/{z}/{x}/{-y}.png', {
   maxZoom: 13,
   zIndex: 2
 });
@@ -96,7 +96,7 @@ map.addControl(new L.Control.Search({
   url: 'https://inaadress.maaamet.ee/inaadress/gazetteer?features=EHITISHOONE&address={s}',
   jsonpParam: 'callback',
   formatData: formatJSON,
-  textPlaceholder: 'Otsi ehiise aadressi',
+  textPlaceholder: 'Otsi ehitise aadressi',
   marker: L.circleMarker([0, 0], {
     radius: 20,
     color: "#ffcc00"
