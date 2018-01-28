@@ -53,18 +53,34 @@ var aluskaart = new L.TileLayer('http://tiles.maaamet.ee/tm/s/1.0.0/kaart/{z}/{x
   zIndex: 1
 }).addTo(map);
 
-var fotokaart = new L.TileLayer('http://tiles.maaamet.ee/tm/s/1.0.0/foto/{z}/{x}/{-y}.png', {
-  maxZoom: 13,
-  // minZoom: 2,
-  zIndex: 1
-});
+var orthotile = L.tileLayer(
+  'http://tiles.maaamet.ee/tm/s/1.0.0/foto/{z}/{x}/{-y}.png', {
+    minZoom: 0,
+    maxZoom: 13,
+    continuousWorld: false,
+    noWrap: false,
+    attribution: 'Ortofoto: <a href="http://www.maaamet.ee" target="_blank" rel="noopener noreferrer">Maa-Amet</a>'
+  }
+);
+
+var orthowms = L.tileLayer.wms(
+  'http://kaart.maaamet.ee/wms/fotokaart', {
+    layers: 'EESTIFOTO',
+    minZoom: 14,
+    maxZoom: 20,
+    version: '1.1.1',
+    attribution: 'Ortofoto: <a href="http://www.maaamet.ee" target="_blank" rel="noopener noreferrer">Maa-Amet</a>'
+  }
+);
+
+var fotokaart = L.layerGroup([orthotile, orthowms]);
 
 var kataster = L.WMS.overlay("http://kaart.maaamet.ee/wms/alus-geo", {
   'transparent': true,
   'srs': 'EPSG_3301',
   'format': 'image/png',
   'layers': 'TOPOYKSUS_6569,TOPOYKSUS_7793',
-  maxZoom: 13,
+  maxZoom: 20,
   minZoom: 11
 });
 kataster.setOpacity(0.8);
@@ -73,6 +89,16 @@ var hybriid = new L.TileLayer('http://tiles.maaamet.ee/tm/s/1.0.0/hybriid/{z}/{x
   maxZoom: 13,
   zIndex: 2
 });
+
+var puurkaev = L.tileLayer(
+  'https://gsavalik.envir.ee/geoserver/gwc/service/tms/1.0.0/eelis:kr_puurk_sankaitseala@EPSG:3301@png/{z}/{x}/{-y}.png', {
+    minZoom: 0,
+    maxZoom: 14,
+    continuousWorld: false,
+    noWrap: false,
+    attribution: "Puurkaevud: CC BY 4.0 EELIS (Eesti Looduse Infosüsteem - Keskkonnaregister) - <a href=\"http://keskkonnaagentuur.ee\" target=\"_blank\" rel=\"noopener noreferrer\">Keskkonnaagentuur</a>",
+  }
+);
 
 L.control.locate({
   strings: {
@@ -112,13 +138,15 @@ L.control.layers({
   "Foto": fotokaart
 }, {
   "Hübriid": hybriid,
-  "Kataster (z11+)": kataster
+  "Kataster (z11+)": kataster,
+  "Puurkaevude kaitsealad": puurkaev
 }).addTo(map);
 
 var layerHashKeys = {
   'a': aluskaart,
   'f': fotokaart,
   'h': hybriid,
-  'k': kataster
+  'k': kataster,
+  'pk': puurkaev
 };
 L.myHash(map, layerHashKeys);
