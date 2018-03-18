@@ -119,10 +119,10 @@ function formatJSON(rawjson) {
 };
 
 map.addControl(new L.Control.Search({
-  url: 'https://inaadress.maaamet.ee/inaadress/gazetteer?features=EHITISHOONE&address={s}',
+  url: 'https://inaadress.maaamet.ee/inaadress/gazetteer?features=KATASTRIYKSUS%2CEHITISHOONE&address={s}',
   jsonpParam: 'callback',
   formatData: formatJSON,
-  textPlaceholder: 'Otsi ehitise aadressi',
+  textPlaceholder: 'Otsi ehitise või katastriüksuse aadressi',
   marker: L.circleMarker([0, 0], {
     radius: 20,
     color: "#ffcc00"
