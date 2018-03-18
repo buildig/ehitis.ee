@@ -53,8 +53,7 @@ var aluskaart = new L.TileLayer('https://tiles.maaamet.ee/tm/tms/1.0.0/kaart/{z}
   zIndex: 1
 }).addTo(map);
 
-var orthotile = L.tileLayer(
-  'https://tiles.maaamet.ee/tm/tms/1.0.0/foto/{z}/{x}/{-y}.png', {
+var orthotile = L.tileLayer('https://tiles.maaamet.ee/tm/tms/1.0.0/foto/{z}/{x}/{-y}.png', {
     minZoom: 0,
     maxZoom: 13,
     continuousWorld: false,
@@ -63,8 +62,7 @@ var orthotile = L.tileLayer(
   }
 );
 
-var orthowms = L.tileLayer.wms(
-  'https://kaart.maaamet.ee/wms/fotokaart', {
+var orthowms = L.tileLayer.wms('https://kaart.maaamet.ee/wms/fotokaart', {
     layers: 'EESTIFOTO',
     minZoom: 14,
     maxZoom: 20,
@@ -90,8 +88,7 @@ var hybriid = new L.TileLayer('https://tiles.maaamet.ee/tm/tms/1.0.0/hybriid/{z}
   zIndex: 2
 });
 
-var puurkaev = L.tileLayer(
-  'https://gsavalik.envir.ee/geoserver/gwc/service/tms/1.0.0/eelis:kr_puurk_sankaitseala@EPSG:3301@png/{z}/{x}/{-y}.png', {
+var puurkaev = L.tileLayer('https://gsavalik.envir.ee/geoserver/gwc/service/tms/1.0.0/eelis:kr_puurk_sankaitseala@EPSG:3301@png/{z}/{x}/{-y}.png', {
     minZoom: 0,
     maxZoom: 14,
     continuousWorld: false,
