@@ -47,14 +47,14 @@ var map = new L.Map('map', {
 
 map.attributionControl.setPrefix('Kaart <a title="Maa-amet" href="http://geoportaal.maaamet.ee" target="_blank">Maa-amet</a> | Teostus <a title="PRIA" href="https://buildig.com/" target="_blank">Buildig</a>');
 
-var aluskaart = new L.TileLayer('http://tiles.maaamet.ee/tm/s/1.0.0/kaart/{z}/{x}/{-y}.png', {
+var aluskaart = new L.TileLayer('https://tiles.maaamet.ee/tm/tms/1.0.0/kaart/{z}/{x}/{-y}.png', {
   maxZoom: 13,
   minZoom: 2,
   zIndex: 1
 }).addTo(map);
 
 var orthotile = L.tileLayer(
-  'http://tiles.maaamet.ee/tm/s/1.0.0/foto/{z}/{x}/{-y}.png', {
+  'https://tiles.maaamet.ee/tm/tms/1.0.0/foto/{z}/{x}/{-y}.png', {
     minZoom: 0,
     maxZoom: 13,
     continuousWorld: false,
@@ -64,7 +64,7 @@ var orthotile = L.tileLayer(
 );
 
 var orthowms = L.tileLayer.wms(
-  'http://kaart.maaamet.ee/wms/fotokaart', {
+  'https://kaart.maaamet.ee/wms/fotokaart', {
     layers: 'EESTIFOTO',
     minZoom: 14,
     maxZoom: 20,
@@ -75,7 +75,7 @@ var orthowms = L.tileLayer.wms(
 
 var fotokaart = L.layerGroup([orthotile, orthowms]);
 
-var kataster = L.WMS.overlay("http://kaart.maaamet.ee/wms/alus-geo", {
+var kataster = L.WMS.overlay("https://kaart.maaamet.ee/wms/alus-geo", {
   'transparent': true,
   'srs': 'EPSG_3301',
   'format': 'image/png',
@@ -85,7 +85,7 @@ var kataster = L.WMS.overlay("http://kaart.maaamet.ee/wms/alus-geo", {
 });
 kataster.setOpacity(0.8);
 
-var hybriid = new L.TileLayer('http://tiles.maaamet.ee/tm/s/1.0.0/hybriid/{z}/{x}/{-y}.png', {
+var hybriid = new L.TileLayer('https://tiles.maaamet.ee/tm/tms/1.0.0/hybriid/{z}/{x}/{-y}.png', {
   maxZoom: 13,
   zIndex: 2
 });
